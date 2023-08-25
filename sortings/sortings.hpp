@@ -13,4 +13,5 @@ class sortings {
         static void heapSort(int* arr, int n);
         static void mergeSort(int* arr, int n);
         static void quickSort(int* arr, int n);
+        static void countingSort(int* arr, int n);
 };
