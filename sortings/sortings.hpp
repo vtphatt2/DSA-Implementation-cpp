@@ -6,5 +6,6 @@ void displayArray(int* arr, int n);
 
 class sortings {
     public :
+        static void bubbleSort(int* &arr, int n);
         static void selectionSort(int* &arr, int n);
 };
