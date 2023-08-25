@@ -9,4 +9,5 @@ class sortings {
         static void bubbleSort(int* &arr, int n);
         static void insertionSort(int* &arr, int n);
         static void selectionSort(int* &arr, int n);
+        static void heapSort(int* &arr, int n);
 };

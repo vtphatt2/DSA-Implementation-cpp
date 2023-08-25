@@ -4,8 +4,8 @@ This repository is used to store all my source codes in my Data Structures (CS16
 # Sorting Algorithms
 1. Bubble sort
 2. Insertion sort
-3. Heap sort
-4. Selection sort
+3. Selection sort
+4. Heap sort
 5. Merge sort
 6. Quick sort
 7. Counting sort
