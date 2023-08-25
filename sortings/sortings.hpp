@@ -3,6 +3,7 @@
 
 void readData(int* &arr, int &n);
 void displayArray(int* arr, int n);
+void swap(int &x, int &y);
 
 class sortings {
     public :
@@ -11,4 +12,5 @@ class sortings {
         static void selectionSort(int* arr, int n);
         static void heapSort(int* arr, int n);
         static void mergeSort(int* arr, int n);
+        static void quickSort(int* arr, int n);
 };
