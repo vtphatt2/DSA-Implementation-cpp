@@ -26,7 +26,7 @@ void swap(int &x, int &y) {
     y = tmp;
 }
 
-void sortings::bubbleSort(int* &arr, int n) {
+void sortings::bubbleSort(int* arr, int n) {
     for (int i = 0 ; i < n - 1 ; i++) {
         for (int j = 0 ; j < n - i - 1 ; j++) {
             if (arr[j] > arr[j + 1]) {
@@ -36,7 +36,7 @@ void sortings::bubbleSort(int* &arr, int n) {
     }
 }
 
-void sortings::insertionSort(int* &arr, int n) {
+void sortings::insertionSort(int* arr, int n) {
     for (int i = 1 ; i < n ; i++) {
         int key = arr[i];
         int j = i - 1;
@@ -48,7 +48,7 @@ void sortings::insertionSort(int* &arr, int n) {
     }
 }
 
-void sortings::selectionSort(int* &arr, int n) {
+void sortings::selectionSort(int* arr, int n) {
     for (int i = 0 ; i < n - 1 ; i++) {
         for (int j = i ; j < n ; j++) {
             if (arr[j] < arr[i]) {
@@ -75,7 +75,7 @@ void heapify(int* arr, int n, int i) {
     }
 }
 
-void sortings::heapSort(int* &arr, int n) {
+void sortings::heapSort(int* arr, int n) {
     for (int i = n/2 - 1 ; i >= 0 ; i--) {
         heapify(arr, n, i);
     }
@@ -83,4 +83,53 @@ void sortings::heapSort(int* &arr, int n) {
         swap(arr[0], arr[i]);
         heapify(arr, i, 0);
     }
+}
+
+void recursive_mergeSort(int* arr, int n, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        recursive_mergeSort(arr, n, left, mid);
+        recursive_mergeSort(arr, n, mid + 1, right);
+
+        int* tmp = new int[right - left + 1];
+        int i = left, j = mid + 1;
+        int idx = 0;
+        while (i <= mid + 1 || j <= right + 1) {
+            if (i == mid + 1) {
+                while (j <= right) {
+                    tmp[idx] = arr[j];
+                    idx++;
+                    j++;
+                }
+                break ;
+            }
+            if (j == right + 1) {
+                while (i <= mid) {
+                    tmp[idx] = arr[i];
+                    i++;
+                    idx++;
+                }
+                break ;
+            }
+            if (arr[i] < arr[j]) {
+                tmp[idx] = arr[i];
+                i++;
+                idx++;
+            }
+            else {
+                tmp[idx] = arr[j];
+                j++;
+                idx++;
+            }
+        }
+        for (int i = 0 ; i < right - left + 1 ; i++) {
+            arr[i + left] = tmp[i];
+        }
+
+        delete[] tmp;
+    }
+} 
+
+void sortings::mergeSort(int* arr, int n) {
+    recursive_mergeSort(arr, n, 0, n - 1);
 }
