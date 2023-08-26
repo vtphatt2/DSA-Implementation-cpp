@@ -57,3 +57,33 @@ void graph::BFS_traversal(int start) {
         }
     }
 }
+
+void graph::Dijkstra(int source) {
+    int* distances = new int[n];
+    for (int i = 0 ; i < n ; i++) distances[i] = INT_MAX;
+    bool* marked = new bool[n];
+    for (int i = 0 ; i < n ; i++) marked[i] = false;
+
+    distances[source] = 0;
+
+    std::priority_queue< std::pair<int, int>, std::vector< std::pair<int, int> >, std::greater< std::pair<int, int> > > pq;
+    pq.push({0, source});
+
+    while (!pq.empty()) {
+        while (marked[pq.top().second]) pq.pop();
+        int cur = pq.top().second;
+        pq.pop();
+        marked[cur] = true;
+        for (int i = 0 ; i < n ; i++) {
+            if (adj[cur][i] > 0 && !marked[i] && distances[cur] + adj[cur][i] < distances[i]) {
+                distances[i] = distances[cur] + adj[cur][i];
+                pq.push({distances[i], i});
+            }
+        }
+    }
+
+    std::cout << "The shortest path from vertex " << source << " to\n";
+    for (int i = 0 ; i < n ; i++) {
+        std::cout << "vertex " << i << " : " << distances[i] << "\n";
+    }
+}

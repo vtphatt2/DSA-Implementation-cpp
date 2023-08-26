@@ -11,4 +11,5 @@ class graph {
         void initialize();
         void DFS_traversal(int start);
         void BFS_traversal(int start);
+        void Dijkstra(int source);
 };

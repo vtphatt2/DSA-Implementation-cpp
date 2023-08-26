@@ -3,6 +3,6 @@
 int main() {
     graph G;
     G.initialize();
-    std::cout << "The BFS traversal : "; G.BFS_traversal(0);
+    G.Dijkstra(5);
     return 0;
 }
