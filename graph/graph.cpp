@@ -86,4 +86,38 @@ void graph::Dijkstra(int source) {
     for (int i = 0 ; i < n ; i++) {
         std::cout << "vertex " << i << " : " << distances[i] << "\n";
     }
+
+    delete[] distances;
+    delete[] marked;
+ }
+
+int graph::costMST() {
+    int res = 0;
+    bool* marked = new bool[n];
+    for (int i = 0 ; i < n ; i++) marked[i] = false;
+    std::priority_queue< std::pair<int, int>, std::vector< std::pair<int, int> >, std::greater< std::pair<int, int> > > pq;
+    pq.push({0, 0});
+
+    while (!pq.empty()) {
+        if (marked[pq.top().second]) {
+            pq.pop();
+            continue ;
+        }
+        int cur = pq.top().second;
+        marked[cur] = true;
+        res += pq.top().first;
+        pq.pop();
+        for (int i = 0 ; i < n ; i++) {
+            if (adj[cur][i] > 0 && !marked[i]) pq.push({adj[cur][i], i});
+        }
+    }
+
+    for (int i = 0 ; i < n ; i++) {
+        if (!marked[i]) {
+            delete[] marked;
+            return -1;
+        }
+    }
+    delete[] marked;
+    return res;
 }

@@ -3,6 +3,6 @@
 int main() {
     graph G;
     G.initialize();
-    G.Dijkstra(5);
+    std::cout << G.costMST();
     return 0;
 }
