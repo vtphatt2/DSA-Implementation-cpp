@@ -4,6 +4,7 @@
 void readData(int* &arr, int &n);
 void displayArray(int* arr, int n);
 void swap(int &x, int &y);
+int getMax(int* arr, int n);
 
 class sortings {
     public :
@@ -14,4 +15,5 @@ class sortings {
         static void mergeSort(int* arr, int n);
         static void quickSort(int* arr, int n);
         static void countingSort(int* arr, int n);
+        static void radixSort(int* arr, int n);
 };
