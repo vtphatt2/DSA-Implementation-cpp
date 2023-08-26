@@ -12,3 +12,10 @@ You can access the folder **sortings** to view all source codes and analyze the 
 6. Quick sort
 7. Counting sort
 8. Radix sort
+
+# Graph
+
+1. Depth first search (DFS)
+2. Breadth first search (BFS)
+3. Dijkstra's algorithm
+4. Minimum spanning tree (MST)
